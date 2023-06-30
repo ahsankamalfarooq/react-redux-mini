@@ -1,3 +1,5 @@
+import { incBonus, incByAmt } from "../actions"
+
 export default function bonusReducer(state={points :1 }, action) {
     switch(action.type){
         case incBonus: return {points : state.points +1}

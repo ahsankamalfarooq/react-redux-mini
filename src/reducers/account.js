@@ -1,3 +1,6 @@
+import { dec, getAccUserFulfilled, getAccUserPending, getAccUserRejected, incByAmt } from "../actions"
+
+
 export default function accountReducer(state={amount :1 }, action) {
 
     switch(action.type){
