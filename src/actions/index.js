@@ -1,3 +1,4 @@
+import axios from "axios"
 export const init = 'account/init'
 export const inc = 'account/increment'
 export const dec = 'account/decrement'
@@ -37,6 +38,6 @@ return {type : dec}
 export function incrementByAmount(value) {
 return {type : incByAmt, payload : value} 
 }
-export function incrementBouns(value) {
+export function incrementBonus(value) {
 return {type : incBonus, payload : value} 
 }

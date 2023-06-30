@@ -12,9 +12,8 @@ import thunk from 'redux-thunk';
 
 const store = createStore(combineReducers({
   account : accountReducer,
-  bonus : bonusReducer
-})
-  , applyMiddleware(logger.default, thunk.default))
+  bonus : bonusReducer 
+}) ,applyMiddleware(logger,thunk))
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
