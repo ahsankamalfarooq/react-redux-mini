@@ -2,37 +2,24 @@ import { useState } from 'react';
 import './App.css';
 import Account from './components/Account';
 import Bonus from './components/Bonus';
+import { useSelector } from 'react-redux';
 
-function App(props) {
-  const store = props.store
-  const [account, setAccount] = useState({amount:0})
-  const [bonus, setBonus] = useState({points:0})
-  const increment = ()=> {
-    setAccount({amount:account.amount+1})
-}
-const decrement = ()=> {
-    setAccount({amount:account.amount-1})
-}
-const incrementByAmount = (value)=> {
-    setAccount({amount:account.amount+value})
-}
+function App() {
 
-///////////////////////////////////////////////////////////
+  const amount = useSelector(state=>state.account.amount)
+  const points = useSelector(state=>state.bonus.points)
+  const account = useSelector(state=>state.account)
 
-// const incrementBonus = ()=> {
-//   setBonus({points: bonus.points+1})
-// }
-
-///////////////////////////////////////////////////////////
   return (
     <div className="App">
       <h1>App</h1>
-      <h3>Current Amount : {store.getState().account.amount}</h3>
-      <h3>Total Bonus : {store.getState().bonus.points}</h3>
+      { account.pending ? <p>loading....</p> : account.error ? <p>{account.error}</p> :
+      <h3>Current Amount : {amount}</h3>
+      }
+      <h3>Total Bonus : {points}</h3>
 
-    <Account increment={increment} decrement={decrement} 
-    incrementByAmount={incrementByAmount} account={account}></Account>
-    <Bonus store={store}></Bonus>
+    <Account></Account>
+    <Bonus></Bonus>
     </div>
   );
 }

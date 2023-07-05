@@ -1,14 +1,13 @@
 import React from 'react'
-import { useState } from 'react'
 import { incrementBonus } from '../actions'
+import { useDispatch, useSelector } from 'react-redux'
 
-const Bonus = (props) => {
-  const bonus = props.bonus
-  const store = props.store
-  // const [bonus, setBonus] = useState({points:0})
-  // const increment = ()=> {
-  //   setBonus({points: bonus.points+1})
-  // }
+const Bonus = () => {
+
+  const points = useSelector(state=>state.bonus.points)
+  const amount = useSelector(state=>state.account.amount)
+  const dispatch = useDispatch()
+
 
   return (
     <div className='card'>
@@ -16,8 +15,9 @@ const Bonus = (props) => {
         <h2>
                 <b>Bonus Component</b>
             </h2>
-            <h3>Bonus Points:{store.getState().bonus.points}</h3>
-            <button onClick={()=>store.dispatch(incrementBonus())}>Increment +</button>
+            <h3>Total Amount:${amount}</h3>
+            <h3>TOtal Points:${points}</h3>
+            <button onClick={()=>dispatch(incrementBonus())}>Increment +</button>
         </div>
     </div>
   )
